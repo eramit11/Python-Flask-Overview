@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Flask – Complete Beginner Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #0f172a;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #334155;
+      --accent: #22c55e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    header {
+      background: radial-gradient(circle at top, #3b82f6, #1e40af);
+      color: #fff;
+      padding: 110px 20px 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      top: -80px;
+      right: -80px;
+      animation: float 6s infinite alternate;
+    }
+
+    header h1 {
+      font-size: 56px;
+      margin-bottom: 16px;
+    }
+
+    header p {
+      font-size: 21px;
+      max-width: 720px;
+      margin: auto;
+      opacity: 0.95;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 36px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      transition: all 0.7s ease;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .card h2 {
+      font-size: 26px;
+      margin-bottom: 14px;
+      color: var(--secondary);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(37,99,235,0.1);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .card ul { padding-left: 20px; }
+    .card li { margin-bottom: 10px; }
+
+    .example {
+      background: linear-gradient(135deg, #ecfeff, #f0fdf4);
+      border-left: 4px solid var(--accent);
+      padding: 16px;
+      border-radius: 12px;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    code {
+      display: block;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 20px;
+      border-radius: 14px;
+      margin-top: 18px;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+
+    .demo-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px dashed #94a3b8;
+    }
+
+    .demo-box button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .demo-box button:hover {
+      transform: scale(1.05);
+    }
+
+    .demo-result {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #e0f2fe;
+      display: none;
+    }
+
+    footer {
+      background: #020617;
+      color: #cbd5f5;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0px); }
+      to { transform: translateY(30px); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Python Flask</h1>
+  <p>Build fast, clean, and reliable backend APIs using Python Flask</p>
+</header>
+
+<main>
+
+  <section class="card">
+    <span class="badge">Basics</span>
+    <h2>1️⃣ What is Python Flask?</h2>
+    <p>Python Flask is a lightweight backend framework used to create web APIs and server-side applications.</p>
+    <ul>
+      <li>Easy to start</li>
+      <li>Gives full control</li>
+      <li>Good for learning backend</li>
+    </ul>
+    <div class="example">Real life: Flask is like a receptionist handling requests and responses.</div>
+  </section>
+
+  <section class="card">
+    <span class="badge">Why Flask</span>
+    <h2>2️⃣ Why use Python Flask?</h2>
+    <ul>
+      <li>Simple and readable code</li>
+      <li>No forced project structure</li>
+      <li>Quick development</li>
+    </ul>
+    <div class="example">Flask vs Django: Flask is flexible, Django is all-in-one.</div>
+  </section>
+
+  <section class="card">
+    <span class="badge">Use Cases</span>
+    <h2>3️⃣ Why do we need Python Flask?</h2>
+    <ul>
+      <li>APIs for mobile apps</li>
+      <li>Microservices</li>
+      <li>Admin dashboards</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="badge">Core</span>
+    <h2>4️⃣ Features & Core Concepts</h2>
+    <ul>
+      <li>ASGI support</li>
+      <li>High performance</li>
+      <li>Swagger & ReDoc</li>
+      <li>Type validation</li>
+      <li>Dependency Injection</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="badge">Live Demo</span>
+    <h2>5️⃣ Flask Hello World Demo</h2>
+    <code>
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return {"message": "Hello from Flask"}
+
+app.run(debug=True)
+    </code>
+
+    <div class="demo-box">
+      <p><b>Try Live Demo (UI simulation)</b></p>
+      <button onclick="runDemo()">Send Request</button>
+      <div id="result" class="demo-result"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <span class="badge">Pros</span>
+    <h2>6️⃣ Advantages</h2>
+    <ul>
+      <li>Fast</li>
+      <li>Beginner friendly</li>
+      <li>Production ready</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="badge">Cons</span>
+    <h2>7️⃣ Disadvantages</h2>
+    <ul>
+      <li>Smaller ecosystem</li>
+      <li>Not for big full-stack apps</li>
+      <li>Async learning curve</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="badge">AI</span>
+    <h2>8️⃣ Flask with AI</h2>
+    <ul>
+      <li>Serve ML models</li>
+      <li>Chatbots</li>
+      <li>Recommendation APIs</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="badge">Future</span>
+    <h2>9️⃣ Flask in 2026 & Beyond</h2>
+    <ul>
+      <li>Used in cloud apps</li>
+      <li>Good for microservices</li>
+      <li>Strong backend career scope</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="badge">Roadmap</span>
+    <h2>📌 Summary & Learning Roadmap</h2>
+    <ul>
+      <li>Learn Python basics</li>
+      <li>Understand HTTP</li>
+      <li>Create Flask APIs</li>
+      <li>Connect database</li>
+      <li>Deploy on cloud</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>Python Flask • Backend • API • Career Growth</p>
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(card => observer.observe(card));
+
+  function runDemo() {
+    const result = document.getElementById('result');
+    result.style.display = 'block';
+    result.innerHTML = 'Response: { "message": "Hello from Flask" }';
+  }
+</script>
+
+</body>
+</html>
